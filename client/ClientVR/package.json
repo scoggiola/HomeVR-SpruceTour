@@ -1,0 +1,47 @@
+{
+  "name": "ClientVR",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node -e \"console.log('open browser at http://localhost:8081/vr/\\n\\n');\" && node node_modules/react-native/local-cli/cli.js start",
+    "bundle": "node node_modules/react-vr/scripts/bundle.js",
+    "open": "node -e \"require('xopen')('http://localhost:8081/vr/')\"",
+    "devtools": "react-devtools",
+    "test": "jest"
+  },
+  "dependencies": {
+    "ovrui": "~2.0.0",
+    "react": "16.0.0",
+    "react-dom": "^16.2.0",
+    "react-native": "~0.48.0",
+    "react-native-axios": "^0.17.1",
+    "react-vr": "~2.0.0",
+    "react-vr-web": "~2.0.0",
+    "three": "^0.87.0",
+    "webvr-polyfill": "^0.10.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.2.5",
+    "babel-jest": "^19.0.0",
+    "babel-preset-react-native": "^1.9.1",
+    "css-mqpacker": "^6.0.2",
+    "cssnano": "^3.10.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.1",
+    "gulp": "^3.9.1",
+    "gulp-postcss": "^7.0.1",
+    "gulp-sass": "^3.1.0",
+    "jest": "^19.0.2",
+    "react-devtools": "^2.5.2",
+    "react-test-renderer": "16.0.0",
+    "sinon": "^4.2.1",
+    "xopen": "1.0.0"
+  },
+  "jest": {
+    "preset": "react-vr",
+    "snapshotSerializers": [
+      "./node_modules/enzyme-to-json/serializer"
+    ]
+  }
+}
