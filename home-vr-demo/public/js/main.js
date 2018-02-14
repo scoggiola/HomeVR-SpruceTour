@@ -28,7 +28,7 @@ $(document).ready(() => {
     const anchors = {
       base: 'img-baseline',
       garage: 'img-garage',
-      sunroom: 'img-sunroom'
+      fireplace: 'img-fireplace'
     };
 
     // Store current menu state by input
@@ -98,9 +98,9 @@ $(document).ready(() => {
       } else if (anchor === anchors.garage) {
         $(`#${anchors.garage}`).attr('src', source);
         $(`#${anchors.garage}`).addClass('active');
-      } else if (anchor === anchors.sunroom) {
-        $(`#${anchors.sunroom}`).attr('src', source);
-        $(`#${anchors.sunroom}`).addClass('active');
+      } else if (anchor === anchors.fireplace) {
+        $(`#${anchors.fireplace}`).attr('src', source);
+        $(`#${anchors.fireplace}`).addClass('active');
       }
     }
 
@@ -123,7 +123,7 @@ $(document).ready(() => {
       if (view === options.view[0] || view === options.view[1] || view === options.view[2]) {
         if (garage === options.garage[0]) {
           // Garage: 2Car
-          return;
+          $(`#${anchors.garage}`).removeClass('active');
         } else {
           // Garage: 3Car
           // Store ref to current imgSrc string
