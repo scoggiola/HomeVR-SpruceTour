@@ -4,7 +4,7 @@ const fakeAPI = {
       menuData: [
         {
           sectionHeader: 'scene',
-          sectionOptions: ['Foyer', 'GreatRoom', 'Kitchen', 'MasterSuite'],
+          sectionOptions: ['Foyer', 'GreatRoom', 'Kitchen', 'MasterSuite', 'MasterBath'],
         },
         {
           sectionHeader: 'bedroom 5',
@@ -28,7 +28,7 @@ const fakeAPI = {
       menuData: [
         {
           sectionHeader: 'scene',
-          sectionOptions: ['Foyer', 'GreatRoom', 'Kitchen', 'MasterSuite'],
+          sectionOptions: ['Foyer', 'GreatRoom', 'Kitchen', 'MasterSuite', 'MasterBath'],
         },
         {
           sectionHeader: 'bedroom 5',
@@ -52,7 +52,7 @@ const fakeAPI = {
       menuData: [
         {
           sectionHeader: 'scene',
-          sectionOptions: ['Foyer', 'GreatRoom', 'Kitchen', 'MasterSuite'],
+          sectionOptions: ['Foyer', 'GreatRoom', 'Kitchen', 'MasterSuite', 'MasterBath'],
         },
         {
           sectionHeader: 'cabinets',
@@ -88,10 +88,22 @@ const fakeAPI = {
       menuData: [
         {
           sectionHeader: 'scene',
-          sectionOptions: ['Foyer', 'GreatRoom', 'Kitchen', 'MasterSuite'],
+          sectionOptions: ['Foyer', 'GreatRoom', 'Kitchen', 'MasterSuite', 'MasterBath'],
         },
       ]
-    }
+    },
+    menuMasterBath: {
+      menuData: [
+        {
+          sectionHeader: 'scene',
+          sectionOptions: ['Foyer', 'GreatRoom', 'Kitchen', 'MasterSuite', 'MasterBath'],
+        },
+        {
+          sectionHeader: 'sink',
+          sectionOptions: ['single', 'double'],
+        },
+      ]
+    },
   },
   modalData: {
     appliances: {
@@ -201,6 +213,10 @@ const fakeAPI = {
     },
     masterSuite: {
       scene: 'panos/mastersuite/Spruce_Int_MasterSuite.png'
+    },
+    masterBath: {
+      scene: 'panos/masterbath/Spruce_Int_MasterBath.png',
+      sink: 'panos/masterbath/Spruce_Int_MasterBath_DblSink.png'
     }
   },
   getMenuData: function() {

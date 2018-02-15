@@ -25,8 +25,9 @@ import GreatRoom from './scenes/GreatRoom';
 import FamilyRoom from './scenes/FamilyRoom';
 import Kitchen from './scenes/Kitchen';
 import MasterSuite from './scenes/MasterSuite';
+import MasterBath from './scenes/MasterBath';
 
-const sceneSelection = ['Foyer', 'GreatRoom', 'Kitchen', 'MasterSuite'];
+const sceneSelection = ['Foyer', 'GreatRoom', 'Kitchen', 'MasterSuite', 'MasterBath'];
 
 const vrMenuContent =
   'This is a React VR textbox! This is how you would show text in VR, where DOM Overlay is not accessible.';
@@ -51,6 +52,7 @@ export default class ClientVR extends React.Component {
       backsplash: 'option1',
       counter: 'option1',
       flooring: 'option1',
+      sink: 'single',
       currentScene: sceneSelection[0],
       menuData: {},
       modalData: {},
@@ -144,6 +146,8 @@ export default class ClientVR extends React.Component {
         this.setState({counter: e.option});
       } else if (e.header === 'flooring') {
         this.setState({flooring: e.option});
+      } else if (e.header === 'sink') {
+        this.setState({sink: e.option});
       }
     });
   }
@@ -163,6 +167,8 @@ export default class ClientVR extends React.Component {
         NativeModules.DomOverlayModule.openOverlay(this.state.menuData.menuKitchen);
       } else if (this.state.currentScene === 'MasterSuite') {
         NativeModules.DomOverlayModule.openOverlay(this.state.menuData.menuMasterSuite);
+      } else if (this.state.currentScene === 'MasterBath') {
+        NativeModules.DomOverlayModule.openOverlay(this.state.menuData.menuMasterBath);
       }
     } else {
       this.setState({menuActive: !this.state.menuActive})
@@ -219,6 +225,10 @@ export default class ClientVR extends React.Component {
           this.setState({currentScene: sceneSelection[3]});
           this.toggleDisplay();
           break;
+        case sceneSelection[4]:
+          this.setState({currentScene: sceneSelection[4]});
+          this.toggleDisplay();
+          break;
         default:
           console.error('scene does not exist');
       }
@@ -265,6 +275,11 @@ export default class ClientVR extends React.Component {
                                   menuData={ this.state.menuData.menuGreatRoom }
                                   storageKeyData={ this.state.storageKeyData }
                                   panoUriData={ this.state.panoUriData } />,
+            MasterBath: <MasterBath renderVrMenu={ this.state.renderVrMenu }
+                                      menuData={ this.state.menuData.menuGreatRoom }
+                                      storageKeyData={ this.state.storageKeyData }
+                                      panoUriData={ this.state.panoUriData }
+                                      sink={ this.state.sink } />,
 
           }[scene]}
         </View>
