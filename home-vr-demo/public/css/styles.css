@@ -105,6 +105,8 @@ html {
     width: 0%; }
   #outer-menu button {
     width: 75%; }
+  #outer-menu {
+    overflow-y: scroll; }
   #media-container {
     width: 80%; }
   #media-container .img-container {

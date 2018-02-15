@@ -61,6 +61,9 @@ html {
   #outer-menu button {
     width: 75%;
   }
+  #outer-menu {
+    overflow-y: scroll;
+  }
 }
 @media screen and (min-width: 1264px) {
   #outer-menu button {
