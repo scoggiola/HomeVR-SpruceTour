@@ -70,6 +70,18 @@
               <label class="form-check-label">Back</label>
             </div>
           </fieldset>
+
+          <fieldset class="form-group">
+            <legend>Color</legend>
+            <div class="form-check">
+              <input class="form-check-input input-dom" type="radio" name="color" value="Color1" checked="checked">
+              <label class="form-check-label">Color1</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input input-dom" type="radio" name="color" value="Color2">
+              <label class="form-check-label">Color2</label>
+            </div>
+          </fieldset>
         </form>
         <button id="vr-btn">Init VR</button>
       </div>
@@ -77,8 +89,11 @@
       <div id="media-container">
         <div class="img-container">
           <img id="img-baseline" src="./public/images/Spruce_Ext_FrontRight_ElevationA.jpg" alt="">
+          <img id="img-baseline-color" class="overlay-img" src="">
           <img id="img-garage" class="overlay-img" src="">
+          <img id="img-garage-color" class="overlay-img" src="">
           <img id="img-fireplace" class="overlay-img" src="">
+          <img id="img-fireplace-color" class="overlay-img" src="">
         </div>
         <iframe allowvr id="frame-vr" src=""></iframe>
       </div>

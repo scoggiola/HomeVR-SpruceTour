@@ -7,7 +7,7 @@ $(document).ready(() => {
   function handleExitVRMode(e) {
     // console.log(e.detail); // <-- For debugging purposes only TODO: remove this line
     if (e.detail.message === 'exit VR') {
-      const content = '<div class="img-container"><img id="img-baseline" src="./public/images/Spruce_Ext_FrontRight_ElevationA.jpg" alt=""><img id="img-garage" class="overlay-img" src=""><img id="img-fireplace" class="overlay-img" src=""></div><iframe allowvr id="frame-vr" src=""></iframe>'
+      const content = '<div class="img-container"><img id="img-baseline" src="./public/images/Spruce_Ext_FrontRight_ElevationA.jpg" alt=""><img id="img-baseline-color" class="overlay-img" src=""><img id="img-garage" class="overlay-img" src=""><img id="img-garage-color" class="overlay-img" src=""><img id="img-fireplace" class="overlay-img" src=""><img id="img-fireplace-color" class="overlay-img" src=""></div><iframe allowvr id="frame-vr" src=""></iframe>'
       $('#media-container').html('');
       $('#outer-menu').removeClass('vr-active');
       $('#media-container').removeClass('vr-active');
@@ -23,12 +23,16 @@ $(document).ready(() => {
       elevation: ['ElevationA', 'ElevationB'],
       garage: ['2Car', '3Car'],
       fireplace: ['Fireplace', ''],
-      view: ['FrontRight', 'FrontLeft', 'Back']
+      view: ['FrontRight', 'FrontLeft', 'Back'],
+      color: ['Color1', 'Color2']
     };
     const anchors = {
       base: 'img-baseline',
       garage: 'img-garage',
-      fireplace: 'img-fireplace'
+      fireplace: 'img-fireplace',
+      baseColor: 'img-baseline-color',
+      garageColor: 'img-garage-color',
+      fireplaceColor: 'img-fireplace-color'
     };
 
     // Store current menu state by input
@@ -36,6 +40,7 @@ $(document).ready(() => {
     const garage = $('.input-dom[name="garage"]:checked').val();
     const fireplace = $('.input-dom[name="fireplace"]:checked').val();
     const view = $('.input-dom[name="view"]:checked').val();
+    const color = $('.input-dom[name="color"]:checked').val();
 
     // Set base and current img src strings
     let imgSrc = './public/images/Spruce_Ext_';
@@ -47,13 +52,13 @@ $(document).ready(() => {
       // TODO: check if class exists first
       $(`#${anchors.fireplace}`).removeClass('active');
       concatSrc(view);
-      handleCaseElevation(elevation);
-      handleCaseGarage(view, garage);
+      handleCaseElevation(elevation, color);
+      handleCaseGarage(view, garage, color);
     } else if (view === options.view[2]) {
       concatSrc(view);
-      handleCaseElevation(elevation);
-      handleCaseGarage(view, garage);
-      handleCaseFireplace(fireplace);
+      handleCaseElevation(elevation, color);
+      handleCaseGarage(view, garage, color);
+      handleCaseFireplace(fireplace, color);
     }
 
    /**
@@ -92,24 +97,41 @@ $(document).ready(() => {
     function updateImg(anchor, source) {
       if (anchor === anchors.base) {
         $(`#${anchors.base}`).attr('src', source);
-      } else if (anchor === anchors.elevation) {
-        $(`#${anchors.elevation}`).attr('src', source);
-        $(`#${anchors.elevation}`).addClass('active');
       } else if (anchor === anchors.garage) {
         $(`#${anchors.garage}`).attr('src', source);
         $(`#${anchors.garage}`).addClass('active');
       } else if (anchor === anchors.fireplace) {
         $(`#${anchors.fireplace}`).attr('src', source);
         $(`#${anchors.fireplace}`).addClass('active');
+      } else if (anchor === anchors.baseColor) {
+        $(`#${anchors.baseColor}`).attr('src', source);
+        $(`#${anchors.baseColor}`).addClass('active');
+      } else if (anchor === anchors.garageColor) {
+        $(`#${anchors.garageColor}`).attr('src', source);
+        $(`#${anchors.garageColor}`).addClass('active');
+      } else if (anchor === anchors.fireplaceColor) {
+        $(`#${anchors.fireplaceColor}`).attr('src', source);
+        $(`#${anchors.fireplaceColor}`).addClass('active');
       }
     }
 
-    function handleCaseElevation(elevation) {
+    function handleCaseElevation(elevation, color) {
       currentSrc = imgSrc;
       concatSrc(elevation);
       capSrc('.jpg');
       updateImg(anchors.base, imgSrc);
       imgSrc = currentSrc;
+      if (color !== options.color[0]) {
+        // Color not Color1
+        currentSrc = imgSrc;
+        concatSrc(elevation);
+        concatSrc(color)
+        capSrc('.png');
+        updateImg(anchors.baseColor, imgSrc);
+        imgSrc = currentSrc;
+      } else {
+        $(`#${anchors.baseColor}`).removeClass('active');
+      }
     }
 
     /**
@@ -119,11 +141,12 @@ $(document).ready(() => {
      * @param  {String} garage
      * @return {Void}
      */
-    function handleCaseGarage(view, garage) {
+    function handleCaseGarage(view, garage, color) {
       if (view === options.view[0] || view === options.view[1] || view === options.view[2]) {
         if (garage === options.garage[0]) {
           // Garage: 2Car
           $(`#${anchors.garage}`).removeClass('active');
+          $(`#${anchors.garageColor}`).removeClass('active');
         } else {
           // Garage: 3Car
           // Store ref to current imgSrc string
@@ -133,6 +156,16 @@ $(document).ready(() => {
           updateImg(anchors.garage, imgSrc);
           // Reset imgSrc
           imgSrc = currentSrc;
+          if (color !== options.color[0]) {
+            currentSrc = imgSrc;
+            concatSrc(garage);
+            concatSrc(color)
+            capSrc('.png');
+            updateImg(anchors.garageColor, imgSrc);
+            imgSrc = currentSrc;
+          } else {
+            $(`#${anchors.garageColor}`).removeClass('active');
+          }
         }
       }
     }
@@ -145,11 +178,24 @@ $(document).ready(() => {
      */
     function handleCaseFireplace(fireplace) {
       if (fireplace === options.fireplace[0]) {
+        currentSrc = imgSrc;
         concatSrc(fireplace);
         capSrc('.png');
         updateImg(anchors.fireplace, imgSrc);
+        imgSrc = currentSrc;
+        if (color !== options.color[0]) {
+          currentSrc = imgSrc;
+          concatSrc(fireplace);
+          concatSrc(color);
+          capSrc('.png');
+          updateImg(anchors.fireplaceColor, imgSrc);
+          imgSrc = currentSrc;
+        } else {
+          $(`#${anchors.fireplaceColor}`).removeClass('active');
+        }
       } else {
         $(`#${anchors.fireplace}`).removeClass('active');
+        $(`#${anchors.fireplaceColor}`).removeClass('active');
       }
     }
   });
