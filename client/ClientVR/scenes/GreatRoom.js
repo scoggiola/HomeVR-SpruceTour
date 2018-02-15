@@ -157,22 +157,22 @@ class GreatRoom extends Component {
       <View>
         <Pano source={ asset(this.state.scenePano) }>
           {this.props.bedroom5On ? (
-            <PanoLayer radius={990} source={ asset(this.state.bedroom5Pano) } />
+            <PanoLayer radius={950} source={ asset(this.state.bedroom5Pano) } />
           ) : (
             <View />
           )}
           {this.props.nook === 'closed' ? (
-            <PanoLayer radius={980} source={ asset(this.state.nookPano) } />
+            <PanoLayer radius={900} source={ asset(this.state.nookPano) } />
           ) : (
             <View />
           )}
           {this.props.fireplaceOn ? (
-            <PanoLayer radius={970} source={ asset(this.state.fireplacePano) } />
+            <PanoLayer radius={850} source={ asset(this.state.fireplacePano) } />
           ) : (
             <View />
           )}
           {this.props.railOn ? (
-            <PanoLayer radius={960} source={ asset(this.state.railPano) } />
+            <PanoLayer radius={800} source={ asset(this.state.railPano) } />
           ) : (
             <View />
           )}

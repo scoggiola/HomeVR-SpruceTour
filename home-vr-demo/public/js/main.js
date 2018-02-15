@@ -51,6 +51,7 @@ $(document).ready(() => {
       // Deactivate fireplace img layer
       // TODO: check if class exists first
       $(`#${anchors.fireplace}`).removeClass('active');
+      $(`#${anchors.fireplaceColor}`).removeClass('active');
       concatSrc(view);
       handleCaseElevation(elevation, color);
       handleCaseGarage(view, garage, color);

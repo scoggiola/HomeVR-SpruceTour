@@ -128,7 +128,7 @@ class MasterBath extends Component {
       <View>
         <Pano source={ asset(this.state.scenePano) }>
           {this.props.sink !== 'single' ? (
-            <PanoLayer radius={990} source={ asset(this.state.sinkPano) } />
+            <PanoLayer radius={950} source={ asset(this.state.sinkPano) } />
           ) : (
             <View />
           )}

@@ -22,7 +22,6 @@ import PanoLayer from './components/PanoLayer';
 
 import Foyer from './scenes/Foyer';
 import GreatRoom from './scenes/GreatRoom';
-import FamilyRoom from './scenes/FamilyRoom';
 import Kitchen from './scenes/Kitchen';
 import MasterSuite from './scenes/MasterSuite';
 import MasterBath from './scenes/MasterBath';

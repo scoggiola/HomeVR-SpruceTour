@@ -294,7 +294,7 @@ class Kitchen extends Component {
                       source={asset(this.state.scenePano)}
           />
           {this.props.cabinets !== 'option1' && this.state.cabinetsPano.length > 0 ? (
-            <PanoSwitch radius={990}
+            <PanoSwitch radius={950}
                         panoOnLoad={this.sceneOnLoad}
                         panoOnLoadEnd={this.sceneOnLoadEnd}
                         showLayerA={this.state.showLayerA}
@@ -306,7 +306,7 @@ class Kitchen extends Component {
             <View />
           )}
           {this.props.backsplash !== 'option1' && this.state.backsplashPano.length > 0 ? (
-            <PanoSwitch radius={980}
+            <PanoSwitch radius={900}
                         panoOnLoad={this.sceneOnLoad}
                         panoOnLoadEnd={this.sceneOnLoadEnd}
                         showLayerA={this.state.showLayerA}
@@ -318,7 +318,7 @@ class Kitchen extends Component {
             <View />
           )}
           {this.props.counter !== 'option1' && this.state.counterPano.length > 0 ? (
-            <PanoSwitch radius={970}
+            <PanoSwitch radius={850}
                         panoOnLoad={this.sceneOnLoad}
                         panoOnLoadEnd={this.sceneOnLoadEnd}
                         showLayerA={this.state.showLayerA}
@@ -330,7 +330,7 @@ class Kitchen extends Component {
             <View />
           )}
           {this.props.flooring !== 'option1' && this.state.flooringPano.length > 0 ? (
-            <PanoSwitch radius={960}
+            <PanoSwitch radius={800}
                         panoOnLoad={this.sceneOnLoad}
                         panoOnLoadEnd={this.sceneOnLoadEnd}
                         showLayerA={this.state.showLayerA}
@@ -342,7 +342,7 @@ class Kitchen extends Component {
             <View />
           )}
           {this.props.fireplaceOn && this.state.fireplacePano.length > 0 ? (
-            <PanoSwitch radius={950}
+            <PanoSwitch radius={750}
                         panoOnLoad={this.sceneOnLoad}
                         panoOnLoadEnd={this.sceneOnLoadEnd}
                         showLayerA={this.state.showLayerA}
@@ -354,7 +354,7 @@ class Kitchen extends Component {
             <View />
           )}
           {this.props.railOn && this.state.railPano.length > 0 ? (
-            <PanoSwitch radius={940}
+            <PanoSwitch radius={700}
                         panoOnLoad={this.sceneOnLoad}
                         panoOnLoadEnd={this.sceneOnLoadEnd}
                         showLayerA={this.state.showLayerA}
@@ -366,7 +366,7 @@ class Kitchen extends Component {
             <View />
           )}
           {this.props.nook === 'closed' && this.state.nookPano.length > 0 ? (
-            <PanoSwitch radius={940}
+            <PanoSwitch radius={650}
                         panoOnLoad={this.sceneOnLoad}
                         panoOnLoadEnd={this.sceneOnLoadEnd}
                         showLayerA={this.state.showLayerA}
