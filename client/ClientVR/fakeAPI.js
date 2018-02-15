@@ -4,7 +4,7 @@ const fakeAPI = {
       menuData: [
         {
           sectionHeader: 'scene',
-          sectionOptions: ['Foyer', 'GreatRoom', 'Kitchen'],
+          sectionOptions: ['Foyer', 'GreatRoom', 'Kitchen', 'MasterSuite'],
         },
         {
           sectionHeader: 'bedroom 5',
@@ -28,7 +28,7 @@ const fakeAPI = {
       menuData: [
         {
           sectionHeader: 'scene',
-          sectionOptions: ['Foyer', 'GreatRoom', 'Kitchen'],
+          sectionOptions: ['Foyer', 'GreatRoom', 'Kitchen', 'MasterSuite'],
         },
         {
           sectionHeader: 'bedroom 5',
@@ -52,7 +52,7 @@ const fakeAPI = {
       menuData: [
         {
           sectionHeader: 'scene',
-          sectionOptions: ['Foyer', 'GreatRoom', 'Kitchen'],
+          sectionOptions: ['Foyer', 'GreatRoom', 'Kitchen', 'MasterSuite'],
         },
         {
           sectionHeader: 'cabinets',
@@ -83,6 +83,14 @@ const fakeAPI = {
           sectionOptions: ['on', 'off'],
         },
       ],
+    },
+    menuMasterSuite: {
+      menuData: [
+        {
+          sectionHeader: 'scene',
+          sectionOptions: ['Foyer', 'GreatRoom', 'Kitchen', 'MasterSuite'],
+        },
+      ]
     }
   },
   modalData: {
@@ -190,6 +198,9 @@ const fakeAPI = {
         option2: 'panos/kitchen/flooring/Spruce_DesignCenter_Floor2.png',
         option3: 'panos/kitchen/flooring/Spruce_DesignCenter_Floor3.png'
       }
+    },
+    masterSuite: {
+      scene: 'panos/mastersuite/Spruce_Int_MasterSuite.png'
     }
   },
   getMenuData: function() {

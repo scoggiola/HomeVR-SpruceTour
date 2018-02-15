@@ -24,8 +24,9 @@ import Foyer from './scenes/Foyer';
 import GreatRoom from './scenes/GreatRoom';
 import FamilyRoom from './scenes/FamilyRoom';
 import Kitchen from './scenes/Kitchen';
+import MasterSuite from './scenes/MasterSuite';
 
-const sceneSelection = ['Foyer', 'GreatRoom', 'Kitchen'];
+const sceneSelection = ['Foyer', 'GreatRoom', 'Kitchen', 'MasterSuite'];
 
 const vrMenuContent =
   'This is a React VR textbox! This is how you would show text in VR, where DOM Overlay is not accessible.';
@@ -160,6 +161,8 @@ export default class ClientVR extends React.Component {
         NativeModules.DomOverlayModule.openOverlay(this.state.menuData.menuGreatRoom);
       } else if (this.state.currentScene === 'Kitchen') {
         NativeModules.DomOverlayModule.openOverlay(this.state.menuData.menuKitchen);
+      } else if (this.state.currentScene === 'MasterSuite') {
+        NativeModules.DomOverlayModule.openOverlay(this.state.menuData.menuMasterSuite);
       }
     } else {
       this.setState({menuActive: !this.state.menuActive})
@@ -212,6 +215,10 @@ export default class ClientVR extends React.Component {
           this.setState({currentScene: sceneSelection[2]});
           this.toggleDisplay();
           break;
+        case sceneSelection[3]:
+          this.setState({currentScene: sceneSelection[3]});
+          this.toggleDisplay();
+          break;
         default:
           console.error('scene does not exist');
       }
@@ -254,6 +261,10 @@ export default class ClientVR extends React.Component {
                               fireplaceOn={ this.state.fireplaceOn }
                               nook={ this.state.nook }
                               railOn={ this.state.railOn } />,
+            MasterSuite: <MasterSuite renderVrMenu={ this.state.renderVrMenu }
+                                  menuData={ this.state.menuData.menuGreatRoom }
+                                  storageKeyData={ this.state.storageKeyData }
+                                  panoUriData={ this.state.panoUriData } />,
 
           }[scene]}
         </View>
