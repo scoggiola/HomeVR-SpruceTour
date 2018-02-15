@@ -1,17 +1,17 @@
 const fakeAPI = {
   domMenuData: {
-    menuFamilyRoom: {
+    menuFoyer: {
       menuData: [
         {
           sectionHeader: 'scene',
-          sectionOptions: ['FamilyRoom', 'Kitchen'],
+          sectionOptions: ['Foyer', 'Kitchen'],
         },
         {
-          sectionHeader: 'elevation',
-          sectionOptions: ['american classic', 'bella vista', 'bella vista brick'],
+          sectionHeader: 'bedroom 5',
+          sectionOptions: ['on', 'off'],
         },
         {
-          sectionHeader: 'sunroom',
+          sectionHeader: 'fireplace',
           sectionOptions: ['on', 'off'],
         },
       ],
@@ -20,7 +20,7 @@ const fakeAPI = {
       menuData: [
         {
           sectionHeader: 'scene',
-          sectionOptions: ['FamilyRoom', 'Kitchen'],
+          sectionOptions: ['Foyer', 'Kitchen'],
         },
         {
           sectionHeader: 'elevation',
@@ -111,6 +111,11 @@ const fakeAPI = {
     all: ['KitchenScenePano', 'KitchenSunroomPano', 'KitchenCabinetsPano', 'KitchenBacksplashPano', 'KitchenCounterPano']
   },
   panoUriData: {
+    foyer: {
+      scene: 'panos/foyer/Spruce_Int_Foyer.jpg',
+      bedroom5: 'panos/foyer/Spruce_Int_Foyer_Bed5.png',
+      fireplace: 'panos/foyer/Spruce_Int_Foyer_Fireplace.png'
+    },
     kitchen: {
       scene: {
         americanClassic: [

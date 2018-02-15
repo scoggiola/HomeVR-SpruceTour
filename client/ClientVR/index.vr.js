@@ -20,10 +20,11 @@ import AsyncStorageUtils from './utils/AsyncStorageUtils';
 import MenuVr from './components/MenuVr';
 import PanoLayer from './components/PanoLayer';
 
+import Foyer from './scenes/Foyer';
 import FamilyRoom from './scenes/FamilyRoom';
 import Kitchen from './scenes/Kitchen';
 
-const sceneSelection = ['FamilyRoom', 'Kitchen'];
+const sceneSelection = ['Foyer', 'Kitchen'];
 
 const vrMenuContent =
   'This is a React VR textbox! This is how you would show text in VR, where DOM Overlay is not accessible.';
@@ -38,6 +39,8 @@ export default class ClientVR extends React.Component {
       renderVrModal: false,
       renderVrLoading: false,
       menuActive: false,
+      bedroom5On: false,
+      fireplaceOn: false,
       sunroomOn: false,
       elevation: 'american classic',
       cabinets: 'option1',
@@ -110,21 +113,17 @@ export default class ClientVR extends React.Component {
   addOverlayOptionListeners = () => {
     RCTDeviceEventEmitter.addListener('overlayOptionEvent', (e) => {
       console.log(e); // <-- for debugging purposes TODO: remove this line
-      if (e.header === 'elevation') {
-        if (e.option === 'american classic') {
-          this.setState({elevation: 'american classic'});
-        } else if (e.option === 'bella vista') {
-          this.setState({elevation: 'bella vista'});
-        } else if (e.option === 'bella vista brick') {
-          this.setState({elevation: 'bella vista brick'});
-        }
-      } else if (e.header === 'sunroom') {
+      if (e.header === 'bedroom 5') {
         if (e.option === 'off') {
-          this.setState({sunroomOn: false});
+          this.setState({bedroom5On: false});
         } else if (e.option === 'on') {
-          this.setState({sunroomOn: true});
-        } else {
-          console.log('not sunroom input');
+          this.setState({bedroom5On: true});
+        }
+      } else if (e.header === 'fireplace') {
+        if (e.option === 'off') {
+          this.setState({fireplaceOn: false});
+        } else if (e.option === 'on') {
+          this.setState({fireplaceOn: true});
         }
       } else if (e.header === 'scene') {
         this.initSceneChange(e.option);
@@ -145,8 +144,8 @@ export default class ClientVR extends React.Component {
       this.setState({renderVrMenu: !this.state.renderVrMenu});
     } else if (!this.state.menuActive) {
       this.setState({menuActive: !this.state.menuActive})
-      if (this.state.currentScene === 'FamilyRoom') {
-        NativeModules.DomOverlayModule.openOverlay(this.state.menuData.menuFamilyRoom);
+      if (this.state.currentScene === 'Foyer') {
+        NativeModules.DomOverlayModule.openOverlay(this.state.menuData.menuFoyer);
       } else {
         NativeModules.DomOverlayModule.openOverlay(this.state.menuData.menuKitchen);
       }
@@ -210,12 +209,12 @@ export default class ClientVR extends React.Component {
       return (
         <View>
           {{
-            FamilyRoom: <FamilyRoom renderVrMenu={ this.state.renderVrMenu }
-                                    menuData={ this.state.menuData.menuFamilyRoom }
-                                    storageKeyData={ this.state.storageKeyData }
-                                    panoUriData={ this.state.panoUriData }
-                                    elevation={ this.state.elevation }
-                                    sunroomOn={ this.state.sunroomOn }/>,
+            Foyer: <Foyer renderVrMenu={ this.state.renderVrMenu }
+                          menuData={ this.state.menuData.menuFoyer }
+                          storageKeyData={ this.state.storageKeyData }
+                          panoUriData={ this.state.panoUriData }
+                          bedroom5On={ this.state.bedroom5On }
+                          fireplaceOn={ this.state.fireplaceOn }/>,
             Kitchen: <Kitchen renderVrMenu={ this.state.renderVrMenu }
                               menuData={ this.state.menuData.menuKitchen }
                               storageKeyData={ this.state.storageKeyData }
