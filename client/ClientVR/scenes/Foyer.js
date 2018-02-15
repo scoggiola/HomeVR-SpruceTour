@@ -19,6 +19,8 @@ class Foyer extends Component {
       scenePano: '',
       bedroom5Pano: '',
       fireplacePano: '',
+      nookPano: '',
+      railPano: '',
       prefetchUris: [],
     };
   }
@@ -34,12 +36,21 @@ class Foyer extends Component {
 
   initScene = (props) => {
     this.setState({scenePano: props.panoUriData.foyer.scene});
+    this.handleBedroom5(props);
+    this.handleFireplace(props);
+    this.handleNook(props);
+    this.handleRail(props);
   }
 
   updateScene = (props) => {
-    if (props.bedroom5On !== this.props.bedroom5On || props.fireplaceOn !== this.props.fireplaceOn) {
+    if (props.bedroom5On !== this.props.bedroom5On ||
+        props.fireplaceOn !== this.props.fireplaceOn ||
+        props.nook !== this.props.nook ||
+        props.railOn !== this.props.railOn) {
       this.handleBedroom5(props);
       this.handleFireplace(props);
+      this.handleNook(props);
+      this.handleRail(props);
     }
   }
 
@@ -52,7 +63,19 @@ class Foyer extends Component {
   handleFireplace = (props) => {
     props.fireplaceOn
       ? this.setState({fireplacePano: props.panoUriData.foyer.fireplace})
-      : console.log('bedroom5 off');
+      : console.log('fireplace off');
+  }
+
+  handleNook = (props) => {
+    props.nook === 'closed'
+      ? this.setState({nookPano: props.panoUriData.foyer.nook})
+      : console.log('nook open');
+  }
+
+  handleRail = (props) => {
+    props.railOn
+      ? this.setState({railPano: props.panoUriData.foyer.rail})
+      : console.log('rail off');
   }
 
   updatePrefetchUris = async (keys) => {
@@ -139,8 +162,18 @@ class Foyer extends Component {
           ) : (
             <View />
           )}
+          {this.props.nook === 'closed' ? (
+            <PanoLayer radius={980} source={ asset(this.state.nookPano) } />
+          ) : (
+            <View />
+          )}
           {this.props.fireplaceOn ? (
-            <PanoLayer radius={980} source={ asset(this.state.fireplacePano) } />
+            <PanoLayer radius={970} source={ asset(this.state.fireplacePano) } />
+          ) : (
+            <View />
+          )}
+          {this.props.railOn ? (
+            <PanoLayer radius={960} source={ asset(this.state.railPano) } />
           ) : (
             <View />
           )}

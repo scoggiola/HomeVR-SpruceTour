@@ -4,7 +4,7 @@ const fakeAPI = {
       menuData: [
         {
           sectionHeader: 'scene',
-          sectionOptions: ['Foyer', 'Kitchen'],
+          sectionOptions: ['Foyer', 'GreatRoom', 'Kitchen'],
         },
         {
           sectionHeader: 'bedroom 5',
@@ -14,33 +14,73 @@ const fakeAPI = {
           sectionHeader: 'fireplace',
           sectionOptions: ['on', 'off'],
         },
+        {
+          sectionHeader: 'nook',
+          sectionOptions: ['open', 'closed'],
+        },
+        {
+          sectionHeader: 'rail',
+          sectionOptions: ['on', 'off'],
+        },
+      ],
+    },
+    menuGreatRoom: {
+      menuData: [
+        {
+          sectionHeader: 'scene',
+          sectionOptions: ['Foyer', 'GreatRoom', 'Kitchen'],
+        },
+        {
+          sectionHeader: 'bedroom 5',
+          sectionOptions: ['on', 'off'],
+        },
+        {
+          sectionHeader: 'fireplace',
+          sectionOptions: ['on', 'off'],
+        },
+        {
+          sectionHeader: 'nook',
+          sectionOptions: ['open', 'closed'],
+        },
+        {
+          sectionHeader: 'rail',
+          sectionOptions: ['on', 'off'],
+        },
       ],
     },
     menuKitchen: {
       menuData: [
         {
           sectionHeader: 'scene',
-          sectionOptions: ['Foyer', 'Kitchen'],
-        },
-        {
-          sectionHeader: 'elevation',
-          sectionOptions: ['american classic', 'bella vista', 'bella vista brick'],
-        },
-        {
-          sectionHeader: 'sunroom',
-          sectionOptions: ['on', 'off'],
+          sectionOptions: ['Foyer', 'GreatRoom', 'Kitchen'],
         },
         {
           sectionHeader: 'cabinets',
-          sectionOptions: ['option1', 'option2', 'option3', 'option4'],
+          sectionOptions: ['option1', 'option2', 'option3'],
         },
         {
           sectionHeader: 'backsplash',
-          sectionOptions: ['option1', 'option2', 'option3', 'option4'],
+          sectionOptions: ['option1', 'option2', 'option3'],
         },
         {
           sectionHeader: 'counter',
-          sectionOptions: ['option1', 'option2', 'option3', 'option4'],
+          sectionOptions: ['option1', 'option2', 'option3'],
+        },
+        {
+          sectionHeader: 'flooring',
+          sectionOptions: ['option1', 'option2', 'option3'],
+        },
+        {
+          sectionHeader: 'fireplace',
+          sectionOptions: ['on', 'off'],
+        },
+        {
+          sectionHeader: 'nook',
+          sectionOptions: ['open', 'closed'],
+        },
+        {
+          sectionHeader: 'rail',
+          sectionOptions: ['on', 'off'],
         },
       ],
     }
@@ -106,84 +146,49 @@ const fakeAPI = {
       cabinets: 'KitchenCabinetsPano',
       backsplash: 'KitchenBacksplashPano',
       counter: 'KitchenCounterPano',
-      all: ['KitchenScenePano', 'KitchenSunroomPano', 'KitchenCabinetsPano', 'KitchenBacksplashPano', 'KitchenCounterPano']
+      flooring: 'KitchenFlooringPano',
+      fireplace: 'KitchenFireplacePano',
+      nook: 'KitchenNookPano',
+      rail: 'KitchenRailPano',
+      all: ['KitchenScenePano', 'KitchenSunroomPano', 'KitchenCabinetsPano', 'KitchenBacksplashPano', 'KitchenCounterPano', 'KitchenFlooringPano', 'KitchenFireplacePano', 'KitchenNookPano', 'KitchenRailPano']
     },
-    all: ['KitchenScenePano', 'KitchenSunroomPano', 'KitchenCabinetsPano', 'KitchenBacksplashPano', 'KitchenCounterPano']
+    all: ['KitchenScenePano', 'KitchenSunroomPano', 'KitchenCabinetsPano', 'KitchenBacksplashPano', 'KitchenCounterPano', 'KitchenFlooringPano', 'KitchenFireplacePano', 'KitchenNookPano', 'KitchenRailPano']
   },
   panoUriData: {
     foyer: {
-      scene: 'panos/foyer/Spruce_Int_Foyer.jpg',
+      scene: 'panos/foyer/Spruce_Int_Foyer.png',
       bedroom5: 'panos/foyer/Spruce_Int_Foyer_Bed5.png',
-      fireplace: 'panos/foyer/Spruce_Int_Foyer_Fireplace.png'
+      fireplace: 'panos/foyer/Spruce_Int_Foyer_Fireplace.png',
+      nook: 'panos/foyer/Spruce_Int_Foyer_Nook.png',
+      rail: 'panos/foyer/Spruce_Int_Foyer_Rail.png'
+    },
+    greatRoom: {
+      scene: 'panos/greatroom/Spruce_Int_GreatRoom.png',
+      bedroom5: 'panos/greatroom/Spruce_Int_GreatRoom_Bed5.png',
+      fireplace: 'panos/greatroom/Spruce_Int_GreatRoom_Fireplace.png',
+      nook: 'panos/greatroom/Spruce_Int_GreatRoom_Nook.png',
+      rail: 'panos/greatroom/Spruce_Int_GreatRoom_Rail.png'
     },
     kitchen: {
-      scene: {
-        americanClassic: [
-          'panos/kitchen/AC/Foster_Int_Kitchen_AmericanClassic0.jpg',
-          'panos/kitchen/AC/Foster_Int_Kitchen_AmericanClassic1.jpg',
-          'panos/kitchen/AC/Foster_Int_Kitchen_AmericanClassic2.jpg',
-          'panos/kitchen/AC/Foster_Int_Kitchen_AmericanClassic3.jpg',
-          'panos/kitchen/AC/Foster_Int_Kitchen_AmericanClassic4.jpg',
-          'panos/kitchen/AC/Foster_Int_Kitchen_AmericanClassic5.jpg'
-        ],
-        americanClassicSunroom: [
-          'panos/kitchen/AC/Foster_Int_Kitchen_AmericanClassic_Sunroom0.jpg',
-          'panos/kitchen/AC/Foster_Int_Kitchen_AmericanClassic_Sunroom1.jpg',
-          'panos/kitchen/AC/Foster_Int_Kitchen_AmericanClassic_Sunroom2.jpg',
-          'panos/kitchen/AC/Foster_Int_Kitchen_AmericanClassic_Sunroom3.jpg',
-          'panos/kitchen/AC/Foster_Int_Kitchen_AmericanClassic_Sunroom4.jpg',
-          'panos/kitchen/AC/Foster_Int_Kitchen_AmericanClassic_Sunroom5.jpg'
-        ],
-        bellaVista: [
-          'panos/kitchen/BV/Foster_Int_Kitchen_BellaVista0.jpg',
-          'panos/kitchen/BV/Foster_Int_Kitchen_BellaVista1.jpg',
-          'panos/kitchen/BV/Foster_Int_Kitchen_BellaVista2.jpg',
-          'panos/kitchen/BV/Foster_Int_Kitchen_BellaVista3.jpg',
-          'panos/kitchen/BV/Foster_Int_Kitchen_BellaVista4.jpg',
-          'panos/kitchen/BV/Foster_Int_Kitchen_BellaVista5.jpg'
-        ],
-        bellaVistaBrick: [
-          'panos/kitchen/BVB/Foster_Int_Kitchen_BellaVistaBrick0.jpg',
-          'panos/kitchen/BVB/Foster_Int_Kitchen_BellaVistaBrick1.jpg',
-          'panos/kitchen/BVB/Foster_Int_Kitchen_BellaVistaBrick2.jpg',
-          'panos/kitchen/BVB/Foster_Int_Kitchen_BellaVistaBrick3.jpg',
-          'panos/kitchen/BVB/Foster_Int_Kitchen_BellaVistaBrick4.jpg',
-          'panos/kitchen/BVB/Foster_Int_Kitchen_BellaVistaBrick5.jpg'
-        ]
-      },
-      sunroom: {
-        bellaVista: 'panos/kitchen/BV/Foster_Int_Kitchen_BellaVista_Sunroom.png',
-        bellaVistaBrick: 'panos/kitchen/BVB/Foster_Int_Kitchen_BellaVistaBrick_Sunroom.png',
-      },
+      scene: 'panos/kitchen/Spruce_Int_Kitchen.png',
+      fireplace: 'panos/kitchen/Spruce_Int_Kitchen_Fireplace.png',
+      nook: 'panos/kitchen/Spruce_Int_Kitchen_Nook.png',
+      rail: 'panos/kitchen/Spruce_Int_Kitchen_Rail.png',
       backsplash: {
-        option2: 'panos/kitchen/backsplash/Kitchen_AC_Backsplash2.png',
-        option3: 'panos/kitchen/backsplash/Kitchen_AC_Backsplash3.png',
-        option4: 'panos/kitchen/backsplash/Kitchen_AC_Backsplash4.png',
-        sunroom: {
-          option2: 'panos/kitchen/backsplash/Kitchen_AC_Sunroom_Backsplash2.png',
-          option3: 'panos/kitchen/backsplash/Kitchen_AC_Sunroom_Backsplash3.png',
-          option4: 'panos/kitchen/backsplash/Kitchen_AC_Sunroom_Backsplash4.png'
-        }
+        option2: 'panos/kitchen/backsplash/Spruce_DesignCenter_Backsplash2.png',
+        option3: 'panos/kitchen/backsplash/Spruce_DesignCenter_Backsplash3.png'
       },
       cabinets: {
-        option2: 'panos/kitchen/cabinets/Kitchen_AC_Cabs2.png',
-        option3: 'panos/kitchen/cabinets/Kitchen_AC_Cabs3.png',
-        option4: 'panos/kitchen/cabinets/Kitchen_AC_Cabs4.png',
-        sunroom: {
-          option2: 'panos/kitchen/cabinets/Kitchen_AC_Sunroom_Cabs2.png',
-          option3: 'panos/kitchen/cabinets/Kitchen_AC_Sunroom_Cabs3.png',
-          option4: 'panos/kitchen/cabinets/Kitchen_AC_Sunroom_Cabs4.png'
-        }
+        option2: 'panos/kitchen/cabinets/Spruce_DesignCenter_Cabinets2.png',
+        option3: 'panos/kitchen/cabinets/Spruce_DesignCenter_Cabinets3.png'
       },
       counter: {
-        option2: 'panos/kitchen/counter/Kitchen_AC_Counter2.png',
-        option3: 'panos/kitchen/counter/Kitchen_AC_Counter3.png',
-        option4: 'panos/kitchen/counter/Kitchen_AC_Counter4.png',
-        sunroom: {
-          option2: 'panos/kitchen/counter/Kitchen_AC_Sunroom_Counter2.png',
-          option3: 'panos/kitchen/counter/Kitchen_AC_Sunroom_Counter3.png',
-          option4: 'panos/kitchen/counter/Kitchen_AC_Sunroom_Counter4.png'
-        }
+        option2: 'panos/kitchen/counter/Spruce_DesignCenter_Counter2.png',
+        option3: 'panos/kitchen/counter/Spruce_DesignCenter_Counter3.png'
+      },
+      flooring: {
+        option2: 'panos/kitchen/flooring/Spruce_DesignCenter_Floor2.png',
+        option3: 'panos/kitchen/flooring/Spruce_DesignCenter_Floor3.png'
       }
     }
   },
