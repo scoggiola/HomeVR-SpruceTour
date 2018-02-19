@@ -190,7 +190,7 @@ const fakeAPI = {
       rail: 'panos/greatroom/Spruce_Int_GreatRoom_Rail.png'
     },
     kitchen: {
-      scene: 'panos/kitchen/Spruce_Int_Kitchen.png',
+      scene: 'panos/kitchen/Spruce_Int_Kitchen.jpg',
       fireplace: 'panos/kitchen/Spruce_Int_Kitchen_Fireplace.png',
       nook: 'panos/kitchen/Spruce_Int_Kitchen_Nook.png',
       rail: 'panos/kitchen/Spruce_Int_Kitchen_Rail.png',
