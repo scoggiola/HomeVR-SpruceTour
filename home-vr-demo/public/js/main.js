@@ -119,7 +119,7 @@ $(document).ready(() => {
     function handleCaseElevation(elevation, color) {
       currentSrc = imgSrc;
       concatSrc(elevation);
-      capSrc('.png');
+      capSrc('.jpg');
       updateImg(anchors.base, imgSrc);
       imgSrc = currentSrc;
       if (color !== options.color[0]) {
