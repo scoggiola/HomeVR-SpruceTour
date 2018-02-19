@@ -176,7 +176,7 @@ const fakeAPI = {
   },
   panoUriData: {
     foyer: {
-      scene: 'panos/foyer/Spruce_Int_Foyer.png',
+      scene: 'panos/foyer/Spruce_Int_Foyer.jpg',
       bedroom5: 'panos/foyer/Spruce_Int_Foyer_Bed5.png',
       fireplace: 'panos/foyer/Spruce_Int_Foyer_Fireplace.png',
       nook: 'panos/foyer/Spruce_Int_Foyer_Nook.png',
