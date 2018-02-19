@@ -45,7 +45,8 @@ class GreatRoom extends Component {
   updateScene = (props) => {
     if (props.bedroom5On !== this.props.bedroom5On ||
         props.fireplaceOn !== this.props.fireplaceOn ||
-        props.nook !== this.props.nook)  {
+        props.nook !== this.props.nook ||
+        props.railOn !== this.props.railOn)  {
       this.handleBedroom5(props);
       this.handleFireplace(props);
       this.handleNook(props);
