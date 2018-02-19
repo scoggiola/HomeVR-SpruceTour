@@ -212,10 +212,10 @@ const fakeAPI = {
       }
     },
     masterSuite: {
-      scene: 'panos/mastersuite/Spruce_Int_MasterSuite.png'
+      scene: 'panos/mastersuite/Spruce_Int_MasterSuite.jpg'
     },
     masterBath: {
-      scene: 'panos/masterbath/Spruce_Int_MasterBath.png',
+      scene: 'panos/masterbath/Spruce_Int_MasterBath.jpg',
       sink: 'panos/masterbath/Spruce_Int_MasterBath_DblSink.png'
     }
   },
