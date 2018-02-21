@@ -27,7 +27,6 @@
       window.addEventListener('message', function(e) {
         if (e.data.type === 'Fireplace' && e.origin === config.messageOrigin ||
             e.data.type === '' && e.origin === config.messageOrigin) {
-          console.log(e);
           let fireplaceVal;
           e.data.type === 'Fireplace' ? fireplaceVal = true : fireplaceVal = false;
           // Initialize the React VR application

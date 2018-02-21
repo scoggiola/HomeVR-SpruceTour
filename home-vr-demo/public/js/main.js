@@ -18,7 +18,6 @@ $(document).ready(() => {
 
   // Add 'click' event listener to inputs
   $('.input-dom').on('click', function(e) {
-    console.log(e);
     // Define menu state options and tag id anchors
     const options = {
       elevation: ['ElevationA', 'ElevationB'],
