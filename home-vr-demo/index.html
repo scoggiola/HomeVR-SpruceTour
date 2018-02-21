@@ -46,11 +46,11 @@
           <fieldset class="form-group">
             <legend>Fireplace</legend>
             <div class="form-check">
-              <input class="form-check-input input-dom" type="radio" name="fireplace" value="Fireplace" checked="checked">
+              <input class="form-check-input input-dom input-fireplace" type="radio" name="fireplace" value="Fireplace" checked="checked">
               <label class="form-check-label">On</label>
             </div>
             <div class="form-check">
-              <input class="form-check-input input-dom" type="radio" name="fireplace" value="">
+              <input class="form-check-input input-dom input-fireplace" type="radio" name="fireplace" value="">
               <label class="form-check-label">Off</label>
             </div>
           </fieldset>
@@ -83,7 +83,7 @@
             </div>
           </fieldset>
         </form>
-        <button id="vr-btn">Init VR</button>
+        <button id="vr-btn">Interior</button>
       </div>
 
       <div id="media-container">
@@ -102,7 +102,7 @@
       src="https://code.jquery.com/jquery-3.2.1.min.js"
       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
       crossorigin="anonymous"></script>
-    <!-- When you're ready to deploy your app, update this line to point to your compiled client.bundle.js -->
+    <script src="public/js/config.js"></script>
     <script src="public/js/main.js"></script>
   </body>
 </html>

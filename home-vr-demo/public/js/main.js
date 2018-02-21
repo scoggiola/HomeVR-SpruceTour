@@ -17,7 +17,8 @@ $(document).ready(() => {
   }
 
   // Add 'click' event listener to inputs
-  $('.input-dom').on('click', function() {
+  $('.input-dom').on('click', function(e) {
+    console.log(e);
     // Define menu state options and tag id anchors
     const options = {
       elevation: ['ElevationA', 'ElevationB'],
@@ -38,13 +39,21 @@ $(document).ready(() => {
     // Store current menu state by input
     const elevation = $('.input-dom[name="elevation"]:checked').val();
     const garage = $('.input-dom[name="garage"]:checked').val();
-    const fireplace = $('.input-dom[name="fireplace"]:checked').val();
-    const view = $('.input-dom[name="view"]:checked').val();
     const color = $('.input-dom[name="color"]:checked').val();
+    const fireplace = $('.input-dom[name="fireplace"]:checked').val();
+    let view = $('.input-dom[name="view"]:checked').val();
 
     // Set base and current img src strings
     let imgSrc = './public/images/Spruce_Ext_';
     let currentSrc = imgSrc;
+
+    const fireplaceClassName = 'form-check-input input-dom input-fireplace';
+
+    if (e.currentTarget.className === fireplaceClassName && view === options.view[0] ||
+        e.currentTarget.className === fireplaceClassName && view === options.view[1]) {
+      setViewOptionToBack();
+      view = $('.input-dom[name="view"]:checked').val();
+    }
 
     if (view === options.view[0] || view === options.view[1]) {
       // view = FrontRight || FrontLeft
@@ -212,9 +221,18 @@ function initVRButton() {
     $('#outer-menu').addClass('vr-active');
     $('#media-container').addClass('vr-active');
     setTimeout(function() {
-      $('#frame-vr').attr('src', './vr/index.html')
+      $('#frame-vr').attr('src', './vr/index.html');
+      setTimeout(function() {
+        sendFireplaceValueToChild();
+      }, 2000)
     }, 1000);
   })
+}
+
+function sendFireplaceValueToChild() {
+  const fireplace = $('.input-dom[name="fireplace"]:checked').val();
+  const targetWindow = $('#frame-vr')[0].contentWindow;
+  targetWindow.postMessage({ type: fireplace }, config.messageOrigin);
 }
 
 /**
@@ -233,5 +251,14 @@ function resetMenu() {
         inputs[i].checked = false;
       }
     }
+  });
+}
+
+function setViewOptionToBack() {
+  const viewInputs = document.getElementsByName('view');
+  // convert nodelist to array
+  const inputArr = Array.prototype.slice.call(viewInputs);
+  inputArr.forEach(function(input, index) {
+    index === 2 ? viewInputs[2].checked = true : viewInputs[index].checked = false;
   });
 }
