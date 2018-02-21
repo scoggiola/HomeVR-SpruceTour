@@ -32,8 +32,8 @@ const vrMenuContent =
   'This is a React VR textbox! This is how you would show text in VR, where DOM Overlay is not accessible.';
 
 export default class ClientVR extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       renderVrMenu: false,
@@ -42,7 +42,7 @@ export default class ClientVR extends React.Component {
       renderVrLoading: false,
       menuActive: false,
       bedroom5On: false,
-      fireplaceOn: false,
+      fireplaceOn: this.props.fireplaceOn || false,
       nook: 'open',
       railOn: false,
       sunroomOn: false,
