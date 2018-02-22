@@ -110,7 +110,7 @@ class Kitchen extends Component {
     if (props.fireplaceOn !== this.props.fireplaceOn) {
       promiseArr.push(this.handleFireplace(props));
     }
-    if (props.nook !== this.props.nook) {
+    if (props.nookOn !== this.props.nookOn) {
       promiseArr.push(this.handleNook(props));
     }
     if (props.railOn !== this.props.railOn) {
