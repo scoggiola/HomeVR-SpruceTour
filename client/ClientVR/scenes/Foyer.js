@@ -45,7 +45,7 @@ class Foyer extends Component {
   updateScene = (props) => {
     if (props.bedroom5On !== this.props.bedroom5On ||
         props.fireplaceOn !== this.props.fireplaceOn ||
-        props.nook !== this.props.nook ||
+        props.nookOn!== this.props.nookOn ||
         props.railOn !== this.props.railOn) {
       this.handleBedroom5(props);
       this.handleFireplace(props);
@@ -67,7 +67,7 @@ class Foyer extends Component {
   }
 
   handleNook = (props) => {
-    props.nook === 'closed'
+    props.nookOn
       ? this.setState({nookPano: props.panoUriData.foyer.nook})
       : console.log('nook open');
   }
@@ -162,7 +162,7 @@ class Foyer extends Component {
           ) : (
             <View />
           )}
-          {this.props.nook === 'closed' ? (
+          {this.props.nookOn ? (
             <PanoLayer radius={900} source={ asset(this.state.nookPano) } />
           ) : (
             <View />

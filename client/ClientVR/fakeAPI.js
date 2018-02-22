@@ -1,130 +1,120 @@
 const fakeAPI = {
   domMenuData: {
-    menuFoyer: {
-      menuData: [
-        {
-          sectionType: 'list',
-          sectionHeader: 'scene',
-          sectionOptions: ['Foyer', 'GreatRoom', 'Kitchen', 'MasterSuite', 'MasterBath'],
-        },
-        {
-          sectionType: 'toggle',
-          sectionHeader: 'bedroom 5',
-          sectionOptions: ['on', 'off'],
-        },
-        {
-          sectionType: 'toggle',
-          sectionHeader: 'fireplace',
-          sectionOptions: ['on', 'off'],
-        },
-        {
-          sectionType: 'toggle',
-          sectionHeader: 'nook',
-          sectionOptions: ['open', 'closed'],
-        },
-        {
-          sectionType: 'toggle',
-          sectionHeader: 'rail',
-          sectionOptions: ['on', 'off'],
-        },
-      ],
-    },
-    menuGreatRoom: {
-      menuData: [
-        {
-          sectionType: 'list',
-          sectionHeader: 'scene',
-          sectionOptions: ['Foyer', 'GreatRoom', 'Kitchen', 'MasterSuite', 'MasterBath'],
-        },
-        {
-          sectionType: 'toggle',
-          sectionHeader: 'bedroom 5',
-          sectionOptions: ['on', 'off'],
-        },
-        {
-          sectionType: 'toggle',
-          sectionHeader: 'fireplace',
-          sectionOptions: ['on', 'off'],
-        },
-        {
-          sectionType: 'toggle',
-          sectionHeader: 'nook',
-          sectionOptions: ['open', 'closed'],
-        },
-        {
-          sectionType: 'toggle',
-          sectionHeader: 'rail',
-          sectionOptions: ['on', 'off'],
-        },
-      ],
-    },
-    menuKitchen: {
-      menuData: [
-        {
-          sectionType: 'list',
-          sectionHeader: 'scene',
-          sectionOptions: ['Foyer', 'GreatRoom', 'Kitchen', 'MasterSuite', 'MasterBath'],
-        },
-        {
-          sectionType: 'list',
-          sectionHeader: 'cabinets',
-          sectionOptions: ['option1', 'option2', 'option3'],
-        },
-        {
-          sectionType: 'list',
-          sectionHeader: 'backsplash',
-          sectionOptions: ['option1', 'option2', 'option3'],
-        },
-        {
-          sectionType: 'list',
-          sectionHeader: 'counter',
-          sectionOptions: ['option1', 'option2', 'option3'],
-        },
-        {
-          sectionType: 'list',
-          sectionHeader: 'flooring',
-          sectionOptions: ['option1', 'option2', 'option3'],
-        },
-        {
-          sectionType: 'toggle',
-          sectionHeader: 'fireplace',
-          sectionOptions: ['on', 'off'],
-        },
-        {
-          sectionType: 'toggle',
-          sectionHeader: 'nook',
-          sectionOptions: ['open', 'closed'],
-        },
-        {
-          sectionType: 'toggle',
-          sectionHeader: 'rail',
-          sectionOptions: ['on', 'off'],
-        },
-      ],
-    },
-    menuMasterSuite: {
-      menuData: [
-        {
-          sectionType: 'list',
-          sectionHeader: 'scene',
-          sectionOptions: ['Foyer', 'GreatRoom', 'Kitchen', 'MasterSuite', 'MasterBath'],
-        },
-      ]
-    },
-    menuMasterBath: {
-      menuData: [
-        {
-          sectionType: 'list',
-          sectionHeader: 'scene',
-          sectionOptions: ['Foyer', 'GreatRoom', 'Kitchen', 'MasterSuite', 'MasterBath'],
-        },
-        {
-          sectionType: 'list',
-          sectionHeader: 'sink',
-          sectionOptions: ['single', 'double'],
-        },
-      ]
-    },
+    menuFoyer: [
+      {
+        sectionType: 'list',
+        sectionHeader: 'scene',
+        sectionOptions: ['Foyer', 'GreatRoom', 'Kitchen', 'MasterSuite', 'MasterBath'],
+      },
+      {
+        sectionType: 'toggle',
+        sectionHeader: 'bedroom 5',
+        sectionOptions: ['on', 'off'],
+      },
+      {
+        sectionType: 'toggle',
+        sectionHeader: 'fireplace',
+        sectionOptions: ['on', 'off'],
+      },
+      {
+        sectionType: 'toggle',
+        sectionHeader: 'nook',
+        sectionOptions: ['closed', 'open'],
+      },
+      {
+        sectionType: 'toggle',
+        sectionHeader: 'rail',
+        sectionOptions: ['on', 'off'],
+      },
+    ],
+    menuGreatRoom: [
+      {
+        sectionType: 'list',
+        sectionHeader: 'scene',
+        sectionOptions: ['Foyer', 'GreatRoom', 'Kitchen', 'MasterSuite', 'MasterBath'],
+      },
+      {
+        sectionType: 'toggle',
+        sectionHeader: 'bedroom 5',
+        sectionOptions: ['on', 'off'],
+      },
+      {
+        sectionType: 'toggle',
+        sectionHeader: 'fireplace',
+        sectionOptions: ['on', 'off'],
+      },
+      {
+        sectionType: 'toggle',
+        sectionHeader: 'nook',
+        sectionOptions: ['closed', 'open'],
+      },
+      {
+        sectionType: 'toggle',
+        sectionHeader: 'rail',
+        sectionOptions: ['on', 'off'],
+      },
+    ],
+    menuKitchen: [
+      {
+        sectionType: 'list',
+        sectionHeader: 'scene',
+        sectionOptions: ['Foyer', 'GreatRoom', 'Kitchen', 'MasterSuite', 'MasterBath'],
+      },
+      {
+        sectionType: 'list',
+        sectionHeader: 'cabinets',
+        sectionOptions: ['option1', 'option2', 'option3'],
+      },
+      {
+        sectionType: 'list',
+        sectionHeader: 'backsplash',
+        sectionOptions: ['option1', 'option2', 'option3'],
+      },
+      {
+        sectionType: 'list',
+        sectionHeader: 'counter',
+        sectionOptions: ['option1', 'option2', 'option3'],
+      },
+      {
+        sectionType: 'list',
+        sectionHeader: 'flooring',
+        sectionOptions: ['option1', 'option2', 'option3'],
+      },
+      {
+        sectionType: 'toggle',
+        sectionHeader: 'fireplace',
+        sectionOptions: ['on', 'off'],
+      },
+      {
+        sectionType: 'toggle',
+        sectionHeader: 'nook',
+        sectionOptions: ['closed', 'open'],
+      },
+      {
+        sectionType: 'toggle',
+        sectionHeader: 'rail',
+        sectionOptions: ['on', 'off'],
+      },
+    ],
+    menuMasterSuite: [
+      {
+        sectionType: 'list',
+        sectionHeader: 'scene',
+        sectionOptions: ['Foyer', 'GreatRoom', 'Kitchen', 'MasterSuite', 'MasterBath'],
+      },
+    ],
+    menuMasterBath: [
+      {
+        sectionType: 'list',
+        sectionHeader: 'scene',
+        sectionOptions: ['Foyer', 'GreatRoom', 'Kitchen', 'MasterSuite', 'MasterBath'],
+      },
+      {
+        sectionType: 'list',
+        sectionHeader: 'sink',
+        sectionOptions: ['single', 'double'],
+      },
+    ],
   },
   modalData: {
     appliances: {

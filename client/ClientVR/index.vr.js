@@ -43,9 +43,8 @@ export default class ClientVR extends React.Component {
       menuActive: false,
       bedroom5On: false,
       fireplaceOn: this.props.fireplaceOn || false,
-      nook: 'open',
+      nookOn: false,
       railOn: false,
-      sunroomOn: false,
       elevation: 'american classic',
       cabinets: 'option1',
       backsplash: 'option1',
@@ -134,7 +133,11 @@ export default class ClientVR extends React.Component {
           this.setState({railOn: true});
         }
       } else if (e.header === 'nook') {
-        this.setState({nook: e.option});
+        if (e.option === 'open') {
+          this.setState({nookOn: false});
+        } else if (e.option === 'closed') {
+          this.setState({nookOn:  true});
+        }
       } else if (e.header === 'scene') {
         this.initSceneChange(e.option);
       } else if (e.header === 'cabinets') {
@@ -154,20 +157,32 @@ export default class ClientVR extends React.Component {
   // Determine whether content should be displayed on the dom overlay, or as a
   // react-vr component based on VrHeadModel's inVR API.
   toggleDisplay = () => {
+    const menuOverlayProps = {
+      bedroom5On: this.state.bedroom5On,
+      fireplaceOn: this.state.fireplaceOn,
+      nookOn: this.state.nookOn,
+      railOn: this.state.railOn,
+    };
+
     if (VrHeadModel.inVR()) {
       this.setState({renderVrMenu: !this.state.renderVrMenu});
     } else if (!this.state.menuActive) {
       this.setState({menuActive: !this.state.menuActive})
       if (this.state.currentScene === 'Foyer') {
-        NativeModules.DomOverlayModule.openOverlay(this.state.menuData.menuFoyer);
+        menuOverlayProps.menuData = this.state.menuData.menuFoyer;
+        NativeModules.DomOverlayModule.openOverlay({ ...menuOverlayProps });
       } else if (this.state.currentScene === 'GreatRoom') {
-        NativeModules.DomOverlayModule.openOverlay(this.state.menuData.menuGreatRoom);
+        menuOverlayProps.menuData = this.state.menuData.menuGreatRoom;
+        NativeModules.DomOverlayModule.openOverlay({ ...menuOverlayProps });
       } else if (this.state.currentScene === 'Kitchen') {
-        NativeModules.DomOverlayModule.openOverlay(this.state.menuData.menuKitchen);
+        menuOverlayProps.menuData = this.state.menuData.menuKitchen;
+        NativeModules.DomOverlayModule.openOverlay({ ...menuOverlayProps });
       } else if (this.state.currentScene === 'MasterSuite') {
-        NativeModules.DomOverlayModule.openOverlay(this.state.menuData.menuMasterSuite);
+        menuOverlayProps.menuData = this.state.menuData.menuMasterSuite;
+        NativeModules.DomOverlayModule.openOverlay({ ...menuOverlayProps });
       } else if (this.state.currentScene === 'MasterBath') {
-        NativeModules.DomOverlayModule.openOverlay(this.state.menuData.menuMasterBath);
+        menuOverlayProps.menuData = this.state.menuData.menuMasterBath;
+        NativeModules.DomOverlayModule.openOverlay({ ...menuOverlayProps });
       }
     } else {
       this.setState({menuActive: !this.state.menuActive})
@@ -247,7 +262,7 @@ export default class ClientVR extends React.Component {
                           panoUriData={ this.state.panoUriData }
                           bedroom5On={ this.state.bedroom5On }
                           fireplaceOn={ this.state.fireplaceOn }
-                          nook={ this.state.nook }
+                          nookOn={ this.state.nookOn }
                           railOn={ this.state.railOn } />,
             GreatRoom: <GreatRoom renderVrMenu={ this.state.renderVrMenu }
                                    menuData={ this.state.menuData.menuGreatRoom }
@@ -255,7 +270,7 @@ export default class ClientVR extends React.Component {
                                    panoUriData={ this.state.panoUriData }
                                    bedroom5On={ this.state.bedroom5On }
                                    fireplaceOn={ this.state.fireplaceOn }
-                                   nook={ this.state.nook }
+                                   nookOn={ this.state.nookOn }
                                    railOn={ this.state.railOn } />,
             Kitchen: <Kitchen renderVrMenu={ this.state.renderVrMenu }
                               menuData={ this.state.menuData.menuKitchen }
@@ -268,7 +283,7 @@ export default class ClientVR extends React.Component {
                               backsplash={ this.state.backsplash }
                               counter = { this.state.counter }
                               fireplaceOn={ this.state.fireplaceOn }
-                              nook={ this.state.nook }
+                              nookOn={ this.state.nookOn }
                               railOn={ this.state.railOn } />,
             MasterSuite: <MasterSuite renderVrMenu={ this.state.renderVrMenu }
                                   menuData={ this.state.menuData.menuGreatRoom }

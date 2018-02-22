@@ -55,7 +55,7 @@ class Kitchen extends Component {
         this.props.counter !== nextProps.counter ||
         this.props.sunroomOn !== nextProps.sunroomOn ||
         this.props.fireplaceOn !== nextProps.fireplaceOn ||
-        this.props.nook !== nextProps.nook ||
+        this.props.nookOn !== nextProps.nookOn ||
         this.props.railOn !== nextProps.railOn) {
       this.updateScene(nextProps);
     }
@@ -219,7 +219,7 @@ class Kitchen extends Component {
   }
 
   handleNook = async (props) => {
-    return props.nook === 'closed'
+    return props.nookOn
       ? await this.buildPanoStateAndSetAsyncStorage(
         'nookPano',
         props.storageKeyData.kitchen.nook,
@@ -365,7 +365,7 @@ class Kitchen extends Component {
           ) : (
             <View />
           )}
-          {this.props.nook === 'closed' && this.state.nookPano.length > 0 ? (
+          {this.props.nookOn && this.state.nookPano.length > 0 ? (
             <PanoSwitch radius={650}
                         panoOnLoad={this.sceneOnLoad}
                         panoOnLoadEnd={this.sceneOnLoadEnd}
