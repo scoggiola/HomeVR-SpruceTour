@@ -1,12 +1,14 @@
 import React from 'react';
+import exitIcon from '../static_assets/icons/exit.png';
 
 // Gets props via the DomOverlayModule and uses those to render content
 const BtnboxOverlay = (props) => {
+  console.log(exitIcon);
   return (
     <div className='overlay'>
       <div className='btn-container-a'>
         <div className='btn-a' onClick={ () => props.handleClick('exitVR button') }>
-          <i className="fa fa-lg fa-sign-out" aria-hidden="true"></i>
+          
         </div>
       </div>
       <div className='btn-container-b'>
