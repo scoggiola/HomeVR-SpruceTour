@@ -3,7 +3,7 @@ const fakeAPI = {
     menuFoyer: [
       {
         sectionType: 'list',
-        sectionHeader: 'scene',
+        sectionHeader: 'camera view',
         sectionOptions: ['Foyer', 'GreatRoom', 'Kitchen', 'MasterSuite', 'MasterBath'],
       },
       {
@@ -30,7 +30,7 @@ const fakeAPI = {
     menuGreatRoom: [
       {
         sectionType: 'list',
-        sectionHeader: 'scene',
+        sectionHeader: 'camera view',
         sectionOptions: ['Foyer', 'GreatRoom', 'Kitchen', 'MasterSuite', 'MasterBath'],
       },
       {
@@ -57,7 +57,7 @@ const fakeAPI = {
     menuKitchen: [
       {
         sectionType: 'list',
-        sectionHeader: 'scene',
+        sectionHeader: 'camera view',
         sectionOptions: ['Foyer', 'GreatRoom', 'Kitchen', 'MasterSuite', 'MasterBath'],
       },
       {
@@ -99,14 +99,14 @@ const fakeAPI = {
     menuMasterSuite: [
       {
         sectionType: 'list',
-        sectionHeader: 'scene',
+        sectionHeader: 'camera view',
         sectionOptions: ['Foyer', 'GreatRoom', 'Kitchen', 'MasterSuite', 'MasterBath'],
       },
     ],
     menuMasterBath: [
       {
         sectionType: 'list',
-        sectionHeader: 'scene',
+        sectionHeader: 'camera view',
         sectionOptions: ['Foyer', 'GreatRoom', 'Kitchen', 'MasterSuite', 'MasterBath'],
       },
       {

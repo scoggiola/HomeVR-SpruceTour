@@ -138,7 +138,7 @@ export default class ClientVR extends React.Component {
         } else if (e.option === 'closed') {
           this.setState({nookOn:  true});
         }
-      } else if (e.header === 'scene') {
+      } else if (e.header === 'camera view') {
         this.initSceneChange(e.option);
       } else if (e.header === 'cabinets') {
         this.setState({cabinets: e.option});
