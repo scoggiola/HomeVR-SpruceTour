@@ -1,4 +1,4 @@
-const devEnv = false;
+const devEnv = true;
 const config = {};
 
 devEnv
