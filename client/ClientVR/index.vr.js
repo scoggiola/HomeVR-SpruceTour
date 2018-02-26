@@ -10,6 +10,7 @@ import {
   VrButton,
   VrHeadModel,
   Prefetch,
+  Scene,
   AsyncStorage
 } from 'react-vr';
 import RCTDeviceEventEmitter from 'RCTDeviceEventEmitter';
@@ -45,7 +46,6 @@ export default class ClientVR extends React.Component {
       fireplaceOn: this.props.fireplaceOn || false,
       nookOn: false,
       railOn: false,
-      elevation: 'american classic',
       cabinets: 'option1',
       backsplash: 'option1',
       counter: 'option1',
@@ -57,6 +57,7 @@ export default class ClientVR extends React.Component {
       storageKeyData: {},
       panoUriData: {},
       hasData: false,
+      rotateY: {current: 0, target: 0, result: 0, prev: 0},
     };
   }
 
@@ -117,8 +118,9 @@ export default class ClientVR extends React.Component {
       if (e.header === 'bedroom 5') {
         if (e.option === 'off') {
           this.setState({bedroom5On: false});
-        } else if (e.option === 'on') {
+        } else if (e.option.value === 'on') {
           this.setState({bedroom5On: true});
+          this.calculateRotation(e.option.rotation);
         }
       } else if (e.header === 'fireplace') {
         if (e.option === 'off') {
@@ -152,6 +154,25 @@ export default class ClientVR extends React.Component {
         this.setState({sink: e.option});
       }
     });
+  }
+
+  calculateRotation = (rotation) => {
+    const prevYRotation = this.state.rotateY.result;
+    const currentYRotation = Math.round(VrHeadModel.rotation()[1]);
+    console.log(`currentYRotation: ${currentYRotation}`);
+    const targetYRotation = Math.round(rotation);
+    console.log(`targetYRotation: ${targetYRotation}`);
+    const rotationResult = Math.round(targetYRotation - currentYRotation + prevYRotation);
+    console.log(`rotationResult: ${rotationResult}`);
+
+    const rotationObj = {
+      current: currentYRotation, target: targetYRotation,
+      result: rotationResult, prev: prevYRotation
+    };
+    // if (Math.abs(rotationResult) !== 0) {
+    //   this.setState({rotateY: rotationObj});
+    // }
+    this.setState({rotateY: rotationObj});
   }
 
   // Determine whether content should be displayed on the dom overlay, or as a
@@ -251,51 +272,61 @@ export default class ClientVR extends React.Component {
 
   // TODO: create BtnboxVr component and add conditional below TextboxVr
   render() {
+    console.log(VrHeadModel.rotation());
+    console.log(this.state.rotateY);
     const scene = this.state.currentScene;
     if (this.state.hasData) {
       return (
         <View>
-          {{
-            Foyer: <Foyer renderVrMenu={ this.state.renderVrMenu }
-                          menuData={ this.state.menuData.menuFoyer }
-                          storageKeyData={ this.state.storageKeyData }
-                          panoUriData={ this.state.panoUriData }
-                          bedroom5On={ this.state.bedroom5On }
-                          fireplaceOn={ this.state.fireplaceOn }
-                          nookOn={ this.state.nookOn }
-                          railOn={ this.state.railOn } />,
-            GreatRoom: <GreatRoom renderVrMenu={ this.state.renderVrMenu }
-                                   menuData={ this.state.menuData.menuGreatRoom }
-                                   storageKeyData={ this.state.storageKeyData }
-                                   panoUriData={ this.state.panoUriData }
-                                   bedroom5On={ this.state.bedroom5On }
-                                   fireplaceOn={ this.state.fireplaceOn }
-                                   nookOn={ this.state.nookOn }
-                                   railOn={ this.state.railOn } />,
-            Kitchen: <Kitchen renderVrMenu={ this.state.renderVrMenu }
-                              menuData={ this.state.menuData.menuKitchen }
-                              storageKeyData={ this.state.storageKeyData }
-                              panoUriData={ this.state.panoUriData }
-                              toggleModal={ this.toggleModal }
-                              toggleLoading={ this.toggleLoading }
-                              cabinets={ this.state.cabinets }
-                              flooring={ this.state.flooring }
-                              backsplash={ this.state.backsplash }
-                              counter = { this.state.counter }
-                              fireplaceOn={ this.state.fireplaceOn }
-                              nookOn={ this.state.nookOn }
-                              railOn={ this.state.railOn } />,
-            MasterSuite: <MasterSuite renderVrMenu={ this.state.renderVrMenu }
-                                  menuData={ this.state.menuData.menuGreatRoom }
-                                  storageKeyData={ this.state.storageKeyData }
-                                  panoUriData={ this.state.panoUriData } />,
-            MasterBath: <MasterBath renderVrMenu={ this.state.renderVrMenu }
+          <Scene style={{
+            transform: [{rotateY: this.state.rotateY.result}]
+          }}>
+            {{
+              Foyer: <Foyer renderVrMenu={ this.state.renderVrMenu }
+                            menuData={ this.state.menuData.menuFoyer }
+                            storageKeyData={ this.state.storageKeyData }
+                            panoUriData={ this.state.panoUriData }
+                            bedroom5On={ this.state.bedroom5On }
+                            fireplaceOn={ this.state.fireplaceOn }
+                            nookOn={ this.state.nookOn }
+                            railOn={ this.state.railOn } />,
+
+              GreatRoom: <GreatRoom renderVrMenu={ this.state.renderVrMenu }
+                                    menuData={ this.state.menuData.menuGreatRoom }
+                                    storageKeyData={ this.state.storageKeyData }
+                                    panoUriData={ this.state.panoUriData }
+                                    bedroom5On={ this.state.bedroom5On }
+                                    fireplaceOn={ this.state.fireplaceOn }
+                                    nookOn={ this.state.nookOn }
+                                    railOn={ this.state.railOn } />,
+
+              Kitchen: <Kitchen renderVrMenu={ this.state.renderVrMenu }
+                                menuData={ this.state.menuData.menuKitchen }
+                                storageKeyData={ this.state.storageKeyData }
+                                panoUriData={ this.state.panoUriData }
+                                toggleModal={ this.toggleModal }
+                                toggleLoading={ this.toggleLoading }
+                                cabinets={ this.state.cabinets }
+                                flooring={ this.state.flooring }
+                                backsplash={ this.state.backsplash }
+                                counter = { this.state.counter }
+                                fireplaceOn={ this.state.fireplaceOn }
+                                nookOn={ this.state.nookOn }
+                                railOn={ this.state.railOn } />,
+
+              MasterSuite: <MasterSuite renderVrMenu={ this.state.renderVrMenu }
+                                        menuData={ this.state.menuData.menuGreatRoom }
+                                        storageKeyData={ this.state.storageKeyData }
+                                        panoUriData={ this.state.panoUriData } />,
+
+              MasterBath: <MasterBath renderVrMenu={ this.state.renderVrMenu }
                                       menuData={ this.state.menuData.menuGreatRoom }
                                       storageKeyData={ this.state.storageKeyData }
                                       panoUriData={ this.state.panoUriData }
                                       sink={ this.state.sink } />,
 
-          }[scene]}
+            }[scene]}
+          </Scene>
         </View>
       );
     } else {
