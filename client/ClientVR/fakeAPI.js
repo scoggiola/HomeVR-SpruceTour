@@ -9,7 +9,7 @@ const fakeAPI = {
       {
         sectionType: 'toggle',
         sectionHeader: 'bedroom 5',
-        sectionOptions: [{value: 'on', rotation: -41.6}, 'off'],
+        sectionOptions: [{value: 'on', rotation: -41.6}, {value: 'off', rotation: -41.6}],
       },
       {
         sectionType: 'toggle',

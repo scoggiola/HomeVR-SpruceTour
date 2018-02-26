@@ -11,7 +11,8 @@ import {
   VrHeadModel,
   Prefetch,
   Scene,
-  AsyncStorage
+  AsyncStorage,
+  Animated
 } from 'react-vr';
 import RCTDeviceEventEmitter from 'RCTDeviceEventEmitter';
 import axios from 'react-native-axios';
@@ -26,6 +27,8 @@ import GreatRoom from './scenes/GreatRoom';
 import Kitchen from './scenes/Kitchen';
 import MasterSuite from './scenes/MasterSuite';
 import MasterBath from './scenes/MasterBath';
+
+const AnimatedScene = Animated.createAnimatedComponent(Scene);
 
 const sceneSelection = ['Foyer', 'GreatRoom', 'Kitchen', 'MasterSuite', 'MasterBath'];
 
@@ -57,7 +60,7 @@ export default class ClientVR extends React.Component {
       storageKeyData: {},
       panoUriData: {},
       hasData: false,
-      rotateY: {current: 0, target: 0, result: 0, prev: 0},
+      rotateY: {current: 0, target: 0, result: 0, prev: 0, resultAnim: new Animated.Value(0)},
     };
   }
 
@@ -116,8 +119,9 @@ export default class ClientVR extends React.Component {
     RCTDeviceEventEmitter.addListener('overlayOptionEvent', (e) => {
       console.log(e); // <-- for debugging purposes TODO: remove this line
       if (e.header === 'bedroom 5') {
-        if (e.option === 'off') {
+        if (e.option.value === 'off') {
           this.setState({bedroom5On: false});
+          this.calculateRotation(e.option.rotation);
         } else if (e.option.value === 'on') {
           this.setState({bedroom5On: true});
           this.calculateRotation(e.option.rotation);
@@ -156,7 +160,7 @@ export default class ClientVR extends React.Component {
     });
   }
 
-  calculateRotation = (rotation) => {
+  calculateRotation = async (rotation) => {
     const prevYRotation = this.state.rotateY.result;
     const currentYRotation = Math.round(VrHeadModel.rotation()[1]);
     console.log(`currentYRotation: ${currentYRotation}`);
@@ -167,12 +171,21 @@ export default class ClientVR extends React.Component {
 
     const rotationObj = {
       current: currentYRotation, target: targetYRotation,
-      result: rotationResult, prev: prevYRotation
+      result: rotationResult, prev: prevYRotation,
+      resultAnim: new Animated.Value(rotationResult)
     };
-    // if (Math.abs(rotationResult) !== 0) {
-    //   this.setState({rotateY: rotationObj});
-    // }
-    this.setState({rotateY: rotationObj});
+
+    Animated.timing(
+      this.state.rotateY.resultAnim,
+      {
+        toValue: rotationResult,
+        duration: 1000,
+      }
+    ).start();
+
+    setTimeout(() => {
+      this.setState({rotateY: rotationObj})
+    }, 1000);
   }
 
   // Determine whether content should be displayed on the dom overlay, or as a
@@ -278,8 +291,8 @@ export default class ClientVR extends React.Component {
     if (this.state.hasData) {
       return (
         <View>
-          <Scene style={{
-            transform: [{rotateY: this.state.rotateY.result}]
+          <AnimatedScene style={{
+            transform: [{rotateY: this.state.rotateY.resultAnim}]
           }}>
             {{
               Foyer: <Foyer renderVrMenu={ this.state.renderVrMenu }
@@ -326,7 +339,7 @@ export default class ClientVR extends React.Component {
                                       sink={ this.state.sink } />,
 
             }[scene]}
-          </Scene>
+          </AnimatedScene>
         </View>
       );
     } else {
