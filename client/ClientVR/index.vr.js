@@ -62,6 +62,8 @@ export default class ClientVR extends React.Component {
       hasData: false,
       rotateY: {current: 0, target: 0, result: 0, prev: 0, resultAnim: new Animated.Value(0)},
     };
+
+    this.rotationDuration = 1200;
   }
 
   componentDidMount() {
@@ -162,11 +164,11 @@ export default class ClientVR extends React.Component {
 
   calculateRotation = async (rotation) => {
     const prevYRotation = this.state.rotateY.result;
-    const currentYRotation = Math.round(VrHeadModel.rotation()[1]);
+    const currentYRotation = VrHeadModel.rotation()[1];
     console.log(`currentYRotation: ${currentYRotation}`);
-    const targetYRotation = Math.round(rotation);
+    const targetYRotation = rotation;
     console.log(`targetYRotation: ${targetYRotation}`);
-    const rotationResult = Math.round(targetYRotation - currentYRotation + prevYRotation);
+    const rotationResult = targetYRotation - currentYRotation + prevYRotation;
     console.log(`rotationResult: ${rotationResult}`);
 
     const rotationObj = {
@@ -179,13 +181,13 @@ export default class ClientVR extends React.Component {
       this.state.rotateY.resultAnim,
       {
         toValue: rotationResult,
-        duration: 1000,
+        duration: this.rotationDuration,
       }
     ).start();
 
     setTimeout(() => {
       this.setState({rotateY: rotationObj})
-    }, 1000);
+    }, this.rotationDuration);
   }
 
   // Determine whether content should be displayed on the dom overlay, or as a
