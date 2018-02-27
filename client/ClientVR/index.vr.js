@@ -123,41 +123,48 @@ export default class ClientVR extends React.Component {
       if (e.header === 'bedroom 5') {
         if (e.option.value === 'off') {
           this.setState({bedroom5On: false});
-          this.calculateRotation(e.option.rotation);
         } else if (e.option.value === 'on') {
           this.setState({bedroom5On: true});
-          this.calculateRotation(e.option.rotation);
         }
+        this.calculateRotation(e.option.rotation);
       } else if (e.header === 'fireplace') {
-        if (e.option === 'off') {
+        if (e.option.value === 'off') {
           this.setState({fireplaceOn: false});
-        } else if (e.option === 'on') {
+        } else if (e.option.value === 'on') {
           this.setState({fireplaceOn: true});
         }
+        this.calculateRotation(e.option.rotation);
       } else if (e.header === 'rail') {
-        if (e.option === 'off') {
+        if (e.option.value === 'off') {
           this.setState({railOn: false});
-        } else if (e.option === 'on') {
+        } else if (e.option.value === 'on') {
           this.setState({railOn: true});
         }
+        this.calculateRotation(e.option.rotation);
       } else if (e.header === 'nook') {
-        if (e.option === 'open') {
+        if (e.option.value === 'open') {
           this.setState({nookOn: false});
-        } else if (e.option === 'closed') {
+        } else if (e.option.value === 'closed') {
           this.setState({nookOn:  true});
         }
+        this.calculateRotation(e.option.rotation);
       } else if (e.header === 'camera view') {
         this.initSceneChange(e.option);
       } else if (e.header === 'cabinets') {
-        this.setState({cabinets: e.option});
+        this.setState({cabinets: e.option.value});
+        this.calculateRotation(e.option.rotation);
       } else if (e.header === 'backsplash') {
-        this.setState({backsplash: e.option});
+        this.setState({backsplash: e.option.value});
+        this.calculateRotation(e.option.rotation);
       } else if (e.header === 'counter') {
-        this.setState({counter: e.option});
+        this.setState({counter: e.option.value});
+        this.calculateRotation(e.option.rotation);
       } else if (e.header === 'flooring') {
-        this.setState({flooring: e.option});
+        this.setState({flooring: e.option.value});
+        this.calculateRotation(e.option.rotation);
       } else if (e.header === 'sink') {
-        this.setState({sink: e.option});
+        this.setState({sink: e.option.value});
+        this.calculateRotation(e.option.rotation);
       }
     });
   }

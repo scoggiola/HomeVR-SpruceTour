@@ -14,17 +14,17 @@ const fakeAPI = {
       {
         sectionType: 'toggle',
         sectionHeader: 'fireplace',
-        sectionOptions: ['on', 'off'],
+        sectionOptions: [{value: 'on', rotation: -137.1}, {value: 'off', rotation: -137.1}],
       },
       {
         sectionType: 'toggle',
         sectionHeader: 'nook',
-        sectionOptions: ['closed', 'open'],
+        sectionOptions: [{value: 'closed', rotation: -179.9}, {value: 'open', rotation: -179.9}],
       },
       {
         sectionType: 'toggle',
         sectionHeader: 'rail',
-        sectionOptions: ['on', 'off'],
+        sectionOptions: [{value: 'on', rotation: -114.3}, {value: 'off', rotation: -114.3}],
       },
     ],
     menuGreatRoom: [
@@ -36,22 +36,22 @@ const fakeAPI = {
       {
         sectionType: 'toggle',
         sectionHeader: 'bedroom 5',
-        sectionOptions: ['on', 'off'],
+        sectionOptions: [{value: 'on', rotation: 68.9}, {value: 'off', rotation: 68.9}],
       },
       {
         sectionType: 'toggle',
         sectionHeader: 'fireplace',
-        sectionOptions: ['on', 'off'],
+        sectionOptions: [{value: 'on', rotation: -27.7}, {value: 'off', rotation: -27.7}],
       },
       {
         sectionType: 'toggle',
         sectionHeader: 'nook',
-        sectionOptions: ['closed', 'open'],
+        sectionOptions: [{value: 'closed', rotation: -130.3}, {value: 'open', rotation: -130.3}],
       },
       {
         sectionType: 'toggle',
         sectionHeader: 'rail',
-        sectionOptions: ['on', 'off'],
+        sectionOptions: [{value: 'on', rotation: 48.7}, {value: 'off', rotation: 48.7}],
       },
     ],
     menuKitchen: [
@@ -63,37 +63,37 @@ const fakeAPI = {
       {
         sectionType: 'list',
         sectionHeader: 'cabinets',
-        sectionOptions: ['option1', 'option2', 'option3'],
+        sectionOptions: [{value: 'option1', rotation: 20.2}, {value: 'option2', rotation: 20.2}, {value: 'option3', rotation: 20.2}],
       },
       {
         sectionType: 'list',
         sectionHeader: 'backsplash',
-        sectionOptions: ['option1', 'option2', 'option3'],
+        sectionOptions: [{value: 'option1', rotation: 20.2}, {value: 'option2', rotation: 20.2}, {value: 'option3', rotation: 20.2}],
       },
       {
         sectionType: 'list',
         sectionHeader: 'counter',
-        sectionOptions: ['option1', 'option2', 'option3'],
+        sectionOptions: [{value: 'option1', rotation: 20.2}, {value: 'option2', rotation: 20.2}, {value: 'option3', rotation: 20.2}],
       },
       {
         sectionType: 'list',
         sectionHeader: 'flooring',
-        sectionOptions: ['option1', 'option2', 'option3'],
+        sectionOptions: [{value: 'option1', rotation: 20.2}, {value: 'option2', rotation: 20.2}, {value: 'option3', rotation: 20.2}],
       },
       {
         sectionType: 'toggle',
         sectionHeader: 'fireplace',
-        sectionOptions: ['on', 'off'],
+        sectionOptions: [{value: 'on', rotation: 169.7}, {value: 'off', rotation: 169.7}],
       },
       {
         sectionType: 'toggle',
         sectionHeader: 'nook',
-        sectionOptions: ['closed', 'open'],
+        sectionOptions: [{value: 'closed', rotation: 174.4}, {value: 'open', rotation: 174.4}],
       },
       {
         sectionType: 'toggle',
         sectionHeader: 'rail',
-        sectionOptions: ['on', 'off'],
+        sectionOptions: [{value: 'on', rotation: -147.8}, {value: 'off', rotation: -147.8}],
       },
     ],
     menuMasterSuite: [
@@ -112,7 +112,7 @@ const fakeAPI = {
       {
         sectionType: 'list',
         sectionHeader: 'sink',
-        sectionOptions: ['single', 'double'],
+        sectionOptions: [{value: 'single', rotation: -12.8}, {value: 'double', rotation: -12.8}],
       },
     ],
   },

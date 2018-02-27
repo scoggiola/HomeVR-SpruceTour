@@ -43,9 +43,10 @@ class MasterBath extends Component {
   }
 
   handleSink = (props) => {
+    console.log(props.sink);
     props.sink === 'double'
       ? this.setState({sinkPano: props.panoUriData.masterBath.sink})
-      : console.log('nook open');
+      : console.log('single sink');
   }
 
   updatePrefetchUris = async (keys) => {
